@@ -16,10 +16,10 @@ public class Product {
 
     public Product(Document productDocument) {
         Element productElement = productDocument.body();
-        this.title = parseTitle(productElement);
-        this.unitPrice = parseUnitPrice(productElement);
-        this.size = null;
-        this.description = parseDescription(productElement);
+        title = parseTitle(productElement);
+        unitPrice = parseUnitPrice(productElement);
+        size = null;
+        description = parseDescription(productElement);
     }
 
     private String parseTitle(Element productElement) {
