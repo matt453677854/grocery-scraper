@@ -14,13 +14,16 @@ public class Product {
     private String description;
 
     public Product(Element productElement) {
-        // TODO: title
+        this.title = getTitle(productElement);
         this.unitPrice = getUnitPrice(productElement);
         // TODO: size
         // TODO: description
     }
 
-
+    private String getTitle(Element productElement) {
+        Element titleElement = productElement.select(".productInfo h3").first();
+        return titleElement.text();
+    }
 
     private BigDecimal getUnitPrice(Element productElement) {
         // TODO: select or first could throw exceptions - how are these handled?

@@ -15,7 +15,16 @@ public class ProductTest {
     private static final String HTML_FILE_ENCODING = "UTF-8";
 
     @Test
-    public void productShouldParseUnitPrice() throws IOException {
+    public void productConstructorShouldParseTitle() throws IOException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        Element productElement = doc.body();
+        Product product = new Product(productElement);
+        assertEquals("Sainsbury's Apricot Ripe & Ready x5", product.getTitle());
+    }
+
+    @Test
+    public void productConstructorShouldParseUnitPrice() throws IOException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
         Element productElement = doc.body();
