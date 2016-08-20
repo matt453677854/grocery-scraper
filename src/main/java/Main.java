@@ -12,11 +12,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Document productsDocument = Jsoup.connect(PRODUCTS_URI).get();
-        Elements productElements = productsDocument.select(".product");
+        Elements productLinkElements = productsDocument.select(".product h3 a");
 
-        for(Element productElement : productElements) {
-            System.out.println(productElement);
-            Product product = new Product(productElement);
+        for(Element productLinkElement : productLinkElements) {
+            String productUri = productLinkElement.attr("href");
+            Document productDocument = Jsoup.connect(productUri).get();
+            Product product = new Product(productDocument);
             System.out.println(product);
         }
     }

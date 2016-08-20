@@ -18,8 +18,7 @@ public class ProductTest {
     public void productConstructorShouldParseTitle() throws IOException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
-        Element productElement = doc.body();
-        Product product = new Product(productElement);
+        Product product = new Product(doc);
         assertEquals("Sainsbury's Apricot Ripe & Ready x5", product.getTitle());
     }
 
@@ -27,8 +26,7 @@ public class ProductTest {
     public void productConstructorShouldParseUnitPrice() throws IOException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
-        Element productElement = doc.body();
-        Product product = new Product(productElement);
+        Product product = new Product(doc);
         assertEquals(new BigDecimal("3.50"), product.getUnitPrice());
     }
 
@@ -36,8 +34,7 @@ public class ProductTest {
     public void productConstructorShouldParseDescription() throws IOException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
-        Element productElement = doc.body();
-        Product product = new Product(productElement);
+        Product product = new Product(doc);
         assertEquals("Apricots", product.getDescription());
     }
 }

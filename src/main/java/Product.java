@@ -1,3 +1,4 @@
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.math.BigDecimal;
@@ -13,7 +14,8 @@ public class Product {
     private Long size;
     private String description;
 
-    public Product(Element productElement) {
+    public Product(Document productDocument) {
+        Element productElement = productDocument.body();
         this.title = parseTitle(productElement);
         this.unitPrice = parseUnitPrice(productElement);
         this.size = null;
