@@ -21,14 +21,13 @@ public class Product {
     }
 
     private String getTitle(Element productElement) {
-        Element titleElement = productElement.select(".productInfo h3").first();
+        Element titleElement = productElement.select("h1").first();
         return titleElement.text();
     }
 
     private BigDecimal getUnitPrice(Element productElement) {
-        // TODO: select or first could throw exceptions - how are these handled?
         Element unitPriceElement = productElement.select(".pricePerUnit").first();
-        String unitPriceString = unitPriceElement.text().replace("&pound", "").replace("/unit", "");
+        String unitPriceString = unitPriceElement.text().replace("£", "").replace("/unit", "");
         return new BigDecimal(unitPriceString);
     }
 
