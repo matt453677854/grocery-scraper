@@ -1,7 +1,6 @@
 import org.jsoup.nodes.Element;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 public class Product {
 
