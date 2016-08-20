@@ -14,21 +14,26 @@ public class Product {
     private String description;
 
     public Product(Element productElement) {
-        this.title = getTitle(productElement);
-        this.unitPrice = getUnitPrice(productElement);
-        // TODO: size
-        // TODO: description
+        this.title = parseTitle(productElement);
+        this.unitPrice = parseUnitPrice(productElement);
+        this.size = null;
+        this.description = parseDescription(productElement);
     }
 
-    private String getTitle(Element productElement) {
+    private String parseTitle(Element productElement) {
         Element titleElement = productElement.select("h1").first();
         return titleElement.text();
     }
 
-    private BigDecimal getUnitPrice(Element productElement) {
+    private BigDecimal parseUnitPrice(Element productElement) {
         Element unitPriceElement = productElement.select(".pricePerUnit").first();
         String unitPriceString = unitPriceElement.text().replace("£", "").replace("/unit", "");
         return new BigDecimal(unitPriceString);
+    }
+
+    private String parseDescription(Element productElement) {
+        Element titleElement = productElement.select(".productText").first();
+        return titleElement.text();
     }
 
     public String getDescription() {

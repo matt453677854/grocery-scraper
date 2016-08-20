@@ -31,4 +31,13 @@ public class ProductTest {
         Product product = new Product(productElement);
         assertEquals(new BigDecimal("3.50"), product.getUnitPrice());
     }
+
+    @Test
+    public void productConstructorShouldParseDescription() throws IOException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        Element productElement = doc.body();
+        Product product = new Product(productElement);
+        assertEquals("Apricots", product.getDescription());
+    }
 }
