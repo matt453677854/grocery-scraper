@@ -11,7 +11,7 @@ public class ProductSerializer implements JsonSerializer<Product> {
         final JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("title", product.getTitle());
         jsonObject.addProperty("unit_price", product.getUnitPrice());
-        jsonObject.addProperty("size", product.getSize()); // TODO: format in kb
+        jsonObject.addProperty("size", product.getSize()/1024 + "kb");
         jsonObject.addProperty("description", product.getDescription());
         return jsonObject;
     }
