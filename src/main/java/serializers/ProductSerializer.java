@@ -4,6 +4,7 @@ import com.google.gson.*;
 import models.Product;
 
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 
 public class ProductSerializer implements JsonSerializer<Product> {
 
@@ -11,7 +12,8 @@ public class ProductSerializer implements JsonSerializer<Product> {
         final JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("title", product.getTitle());
         jsonObject.addProperty("unit_price", product.getUnitPrice());
-        jsonObject.addProperty("size", product.getSize()/1024 + "kb");
+        BigDecimal sizeInKb = new BigDecimal(String.valueOf(product.getSize()/1024.0)).setScale(1, BigDecimal.ROUND_HALF_UP);
+        jsonObject.addProperty("size", sizeInKb + "kb");
         jsonObject.addProperty("description", product.getDescription());
         return jsonObject;
     }
