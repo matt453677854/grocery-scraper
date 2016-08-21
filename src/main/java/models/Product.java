@@ -16,6 +16,13 @@ public class Product {
     private long size;
     private String description;
 
+    public Product(String title, BigDecimal unitPrice, long size, String description) {
+        this.title = title;
+        this.unitPrice = unitPrice;
+        this.size = size;
+        this.description = description;
+    }
+
     public Product(Document productDocument, long size) throws ProductParseException {
         Element productElement = productDocument.body();
         title = parseTitle(productElement);
