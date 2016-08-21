@@ -2,22 +2,25 @@ package models;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import serialisers.ProductTypeAdapter;
+import serializers.ProductSerializer;
+import serializers.ProductsSerializer;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public class Products {
 
-    private List<Product> results;
-    private BigDecimal total;
+    private List<Product> products;
 
     public Products(List<Product> products) {
-        results = products;
-        total = calculateTotal(products);
+        this.products = products;
     }
 
-    public BigDecimal calculateTotal(List<Product> products) {
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public BigDecimal getTotalUnitPrice() {
         BigDecimal total = new BigDecimal(0);
         for(Product product : products) {
             total = total.add(product.getUnitPrice());
@@ -27,7 +30,8 @@ public class Products {
 
     public String toJSON() {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Product.class, new ProductTypeAdapter());
+        gsonBuilder.registerTypeAdapter(Products.class, new ProductsSerializer());
+        gsonBuilder.registerTypeAdapter(Product.class, new ProductSerializer());
         gsonBuilder.setPrettyPrinting();
         Gson gson = gsonBuilder.create();
         return gson.toJson(this);
