@@ -1,9 +1,8 @@
 import exceptions.ProductParseException;
+import models.Product;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;

@@ -1,6 +1,5 @@
 import exceptions.ProductFetchException;
-
-import java.util.List;
+import models.Products;
 
 public interface ProductFetcher {
     Products fetchAllProducts() throws ProductFetchException;

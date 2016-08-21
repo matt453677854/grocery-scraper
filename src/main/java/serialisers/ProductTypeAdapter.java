@@ -1,7 +1,9 @@
+package serialisers;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import models.Product;
 
 import java.io.IOException;
 
@@ -19,6 +21,6 @@ public class ProductTypeAdapter extends TypeAdapter<Product> {
 
     @Override
     public Product read(JsonReader jsonReader) throws IOException {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }

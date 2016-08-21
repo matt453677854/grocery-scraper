@@ -1,5 +1,5 @@
 import exceptions.ProductFetchException;
-import java.util.List;
+import models.Products;
 
 public class Main {
 

@@ -1,3 +1,5 @@
+package models;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import exceptions.ProductParseException;
@@ -68,7 +70,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "models.Product{" +
                 "title='" + title + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", size=" + size +

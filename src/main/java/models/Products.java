@@ -1,5 +1,8 @@
+package models;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import serialisers.ProductTypeAdapter;
 
 import java.math.BigDecimal;
 import java.util.List;

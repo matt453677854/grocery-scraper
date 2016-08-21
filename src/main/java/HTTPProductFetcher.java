@@ -1,5 +1,7 @@
 import exceptions.ProductFetchException;
 import exceptions.ProductParseException;
+import models.Product;
+import models.Products;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -46,8 +48,8 @@ public class HTTPProductFetcher implements ProductFetcher {
 
     /**
      * Fetch a single product
-     * @param productUri Product URI
-     * @return Product
+     * @param productUri models.Product URI
+     * @return models.Product
      * @throws ProductFetchException
      */
     private Product fetchProduct(String productUri) throws ProductFetchException {
