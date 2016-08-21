@@ -5,20 +5,16 @@ import java.math.BigDecimal;
 
 public class Product {
 
-    public static class Builder {
-        // TODO: use builder pattern
-    }
-
     private String title;
     private BigDecimal unitPrice;
-    private Long size;
+    private long size;
     private String description;
 
-    public Product(Document productDocument) {
+    public Product(Document productDocument, long size) {
         Element productElement = productDocument.body();
         title = parseTitle(productElement);
         unitPrice = parseUnitPrice(productElement);
-        size = null;
+        this.size = size;
         description = parseDescription(productElement);
     }
 

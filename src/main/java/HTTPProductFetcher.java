@@ -1,4 +1,5 @@
 import exceptions.ProductFetchException;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,27 +11,50 @@ import java.util.List;
 
 public class HTTPProductFetcher implements ProductFetcher {
 
-    private final static String PRODUCTS_URI = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
+    private String productsUri;
 
-    public HTTPProductFetcher() {
+    public HTTPProductFetcher(String productsUri) {
+        this.productsUri = productsUri;
     }
 
+    /**
+     * Fetch all products listed on products page, following each link
+     * @return List of products
+     * @throws ProductFetchException
+     */
     public List<Product> fetchAllProducts() throws ProductFetchException {
         List<Product> products = new ArrayList<Product>();
 
         // TODO: retry on failure
+        // TODO: tests with stub
 
         try {
-            Document productsDocument = Jsoup.connect(PRODUCTS_URI).get();
+            Document productsDocument = Jsoup.connect(productsUri).get();
             Elements productLinkElements = productsDocument.select(".product h3 a");
 
             for (Element productLinkElement : productLinkElements) {
                 String productUri = productLinkElement.attr("href");
-                Document productDocument = Jsoup.connect(productUri).get();
-                Product product = new Product(productDocument);
+                Product product = fetchProduct(productUri);
                 products.add(product);
             }
             return products;
+        } catch(IOException ioe) {
+            throw new ProductFetchException(ioe);
+        }
+    }
+
+    /**
+     * Fetch a single product
+     * @param productUri Product URI
+     * @return Product
+     * @throws ProductFetchException
+     */
+    private Product fetchProduct(String productUri) throws ProductFetchException {
+        try {
+            Connection connection = Jsoup.connect(productUri);
+            Document productDocument = connection.get();
+            long size = connection.response().body().length();
+            return new Product(productDocument, size);
         } catch(IOException ioe) {
             throw new ProductFetchException(ioe);
         }

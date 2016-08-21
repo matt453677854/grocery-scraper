@@ -11,7 +11,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws ProductFetchException {
-        ProductFetcher productFetcher = new HTTPProductFetcher();
+        String productsUri = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
+        ProductFetcher productFetcher = new HTTPProductFetcher(productsUri);
         List<Product> products = productFetcher.fetchAllProducts();
         System.out.println(products);
     }
