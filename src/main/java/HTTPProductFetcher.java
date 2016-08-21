@@ -1,4 +1,5 @@
 import exceptions.ProductFetchException;
+import exceptions.ProductParseException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,8 +39,8 @@ public class HTTPProductFetcher implements ProductFetcher {
                 products.add(product);
             }
             return products;
-        } catch(IOException ioe) {
-            throw new ProductFetchException(ioe);
+        } catch(IOException e) {
+            throw new ProductFetchException(e);
         }
     }
 
@@ -55,8 +56,10 @@ public class HTTPProductFetcher implements ProductFetcher {
             Document productDocument = connection.get();
             long size = connection.response().body().length();
             return new Product(productDocument, size);
-        } catch(IOException ioe) {
-            throw new ProductFetchException(ioe);
+        } catch(IOException e) {
+            throw new ProductFetchException(e);
+        } catch (ProductParseException e) {
+            throw new ProductFetchException(e);
         }
     }
 }

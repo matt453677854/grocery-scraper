@@ -1,3 +1,4 @@
+import exceptions.ProductParseException;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +16,7 @@ public class ProductTest {
     private static final String HTML_FILE_ENCODING = "UTF-8";
 
     @Test
-    public void productConstructorShouldParseTitle() throws IOException {
+    public void productConstructorShouldParseTitle() throws IOException, ProductParseException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
         Product product = new Product(doc, 0);
@@ -23,7 +24,7 @@ public class ProductTest {
     }
 
     @Test
-    public void productConstructorShouldParseUnitPrice() throws IOException {
+    public void productConstructorShouldParseUnitPrice() throws IOException, ProductParseException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
         Product product = new Product(doc, 0);
@@ -31,7 +32,7 @@ public class ProductTest {
     }
 
     @Test
-    public void productConstructorShouldParseDescription() throws IOException {
+    public void productConstructorShouldParseDescription() throws IOException, ProductParseException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
         Product product = new Product(doc, 0);
@@ -39,10 +40,38 @@ public class ProductTest {
     }
 
     @Test
-    public void productShouldStoreSize() throws IOException {
+    public void productShouldStoreSize() throws IOException, ProductParseException {
         String html = IOUtils.toString(this.getClass().getResourceAsStream("product.html"), HTML_FILE_ENCODING);
         Document doc = Jsoup.parseBodyFragment(html);
         Product product = new Product(doc, 1024);
         assertEquals(1024, product.getSize());
+    }
+
+    @Test(expected=ProductParseException.class)
+    public void shouldThrowException_whenMissingTitle() throws IOException, ProductParseException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product_no_title.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        new Product(doc, 0);
+    }
+
+    @Test(expected=ProductParseException.class)
+    public void shouldThrowException_whenMissingUnitPrice() throws IOException, ProductParseException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product_no_unit_price.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        new Product(doc, 0);
+    }
+
+    @Test(expected=NumberFormatException.class)
+    public void shouldThrowException_whenMalformedUnitPrice() throws IOException, ProductParseException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product_malformed_unit_price.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        new Product(doc, 0);
+    }
+
+    @Test(expected=ProductParseException.class)
+    public void shouldThrowException_whenMissingDescription() throws IOException, ProductParseException {
+        String html = IOUtils.toString(this.getClass().getResourceAsStream("product_no_description.html"), HTML_FILE_ENCODING);
+        Document doc = Jsoup.parseBodyFragment(html);
+        new Product(doc, 0);
     }
 }

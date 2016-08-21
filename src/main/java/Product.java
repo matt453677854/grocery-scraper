@@ -1,3 +1,4 @@
+import exceptions.ProductParseException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -10,7 +11,7 @@ public class Product {
     private long size;
     private String description;
 
-    public Product(Document productDocument, long size) {
+    public Product(Document productDocument, long size) throws ProductParseException {
         Element productElement = productDocument.body();
         title = parseTitle(productElement);
         unitPrice = parseUnitPrice(productElement);
@@ -18,20 +19,32 @@ public class Product {
         description = parseDescription(productElement);
     }
 
-    private String parseTitle(Element productElement) {
+    private String parseTitle(Element productElement) throws ProductParseException {
         Element titleElement = productElement.select("h1").first();
-        return titleElement.text();
+        if(titleElement != null) {
+            return titleElement.text();
+        } else {
+            throw new ProductParseException("Error parsing title");
+        }
     }
 
-    private BigDecimal parseUnitPrice(Element productElement) {
+    private BigDecimal parseUnitPrice(Element productElement) throws ProductParseException {
         Element unitPriceElement = productElement.select(".pricePerUnit").first();
-        String unitPriceString = unitPriceElement.text().replace("£", "").replace("/unit", "");
-        return new BigDecimal(unitPriceString);
+        if(unitPriceElement != null) {
+            String unitPriceString = unitPriceElement.text().replace("£", "").replace("/unit", "");
+            return new BigDecimal(unitPriceString);
+        } else {
+            throw new ProductParseException("Error parsing price");
+        }
     }
 
-    private String parseDescription(Element productElement) {
+    private String parseDescription(Element productElement) throws ProductParseException {
         Element titleElement = productElement.select(".productText").first();
-        return titleElement.text();
+        if(titleElement != null) {
+            return titleElement.text();
+        } else {
+            throw new ProductParseException("Error parsing description");
+        }
     }
 
     public String getDescription() {
