@@ -31,7 +31,6 @@ public class HTTPProductFetcher implements ProductFetcher {
         List<Product> products = new ArrayList<Product>();
 
         // TODO: retry on failure
-        // TODO: tests with stub
 
         try {
             Document productsDocument = Jsoup.connect(productsUri).get();
