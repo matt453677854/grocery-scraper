@@ -1,13 +1,9 @@
 package models;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import exceptions.ProductParseException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Product {
 
