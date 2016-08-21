@@ -1,6 +1,9 @@
 # Grocery Scraper
 [![Build Status](https://travis-ci.org/matt453677854/grocery-scraper.svg?branch=master)](https://travis-ci.org/matt453677854/grocery-scraper)
 
+## Dependencies
+The only dependencies are Java and Maven, and all other dependencies are installed through Maven. Tested on Mac OS X 10.9.5, Java 1.8.0_45 and Maven 3.2.3. Also tested on Java 1.7.
+
 ## Build
 Install dependencies, compile, and test:  
 `mvn install`  
