@@ -23,7 +23,7 @@ public class HTTPProductFetcher implements ProductFetcher {
      * @return List of products
      * @throws ProductFetchException
      */
-    public List<Product> fetchAllProducts() throws ProductFetchException {
+    public Products fetchAllProducts() throws ProductFetchException {
         List<Product> products = new ArrayList<Product>();
 
         // TODO: retry on failure
@@ -38,7 +38,7 @@ public class HTTPProductFetcher implements ProductFetcher {
                 Product product = fetchProduct(productUri);
                 products.add(product);
             }
-            return products;
+            return new Products(products);
         } catch(IOException e) {
             throw new ProductFetchException(e);
         }

@@ -1,8 +1,11 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import exceptions.ProductParseException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Product {
 
@@ -34,7 +37,7 @@ public class Product {
             String unitPriceString = unitPriceElement.text().replace("£", "").replace("/unit", "");
             return new BigDecimal(unitPriceString);
         } else {
-            throw new ProductParseException("Error parsing price");
+            throw new ProductParseException("Error parsing unit price");
         }
     }
 
