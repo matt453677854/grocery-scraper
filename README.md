@@ -19,7 +19,7 @@ Install dependencies, compile, and test:
 
 ## Test
 Run only the tests:  
-`$ mvn test`
+`$ mvn test`  
 HTTP endpoints are stubbed out using wiremock.
 
 ## Run
