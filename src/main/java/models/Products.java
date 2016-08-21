@@ -12,6 +12,10 @@ public class Products {
 
     private List<Product> products;
 
+    /**
+     * Construct a new products wrapper
+     * @param products List of products
+     */
     public Products(List<Product> products) {
         this.products = products;
     }
@@ -20,6 +24,9 @@ public class Products {
         return products;
     }
 
+    /**
+     * @return total unit price of all products
+     */
     public BigDecimal getTotalUnitPrice() {
         BigDecimal total = new BigDecimal(0);
         for(Product product : products) {
@@ -28,6 +35,10 @@ public class Products {
         return total;
     }
 
+    /**
+     * Serialise all products to a JSON string
+     * @return
+     */
     public String toJSON() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Products.class, new ProductsSerializer());

@@ -12,6 +12,13 @@ public class Product {
     private long size;
     private String description;
 
+    /**
+     * Construct a new product
+     * @param title Product title
+     * @param unitPrice Product unit price in pounds
+     * @param size Product page size in bytes
+     * @param description Product description
+     */
     public Product(String title, BigDecimal unitPrice, long size, String description) {
         this.title = title;
         this.unitPrice = unitPrice;
@@ -19,6 +26,12 @@ public class Product {
         this.description = description;
     }
 
+    /**
+     * Construct a new product by parsing its HTML product page
+     * @param productDocument HTML product page
+     * @param size Product page size in bytes
+     * @throws ProductParseException
+     */
     public Product(Document productDocument, long size) throws ProductParseException {
         Element productElement = productDocument.body();
         title = parseTitle(productElement);
@@ -55,18 +68,30 @@ public class Product {
         }
     }
 
+    /**
+     * @return product description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return product title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @return product unit price in pounds
+     */
     public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
+    /**
+     * @return product page size in bytes
+     */
     public long getSize() {
         return size;
     }

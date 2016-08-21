@@ -29,9 +29,6 @@ public class HTTPProductFetcher implements ProductFetcher {
      */
     public Products fetchAllProducts() throws ProductFetchException {
         List<Product> products = new ArrayList<Product>();
-
-        // TODO: retry on failure
-
         try {
             Document productsDocument = Jsoup.connect(productsUri).get();
             Elements productLinkElements = productsDocument.select(".product h3 a");

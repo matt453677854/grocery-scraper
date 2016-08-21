@@ -6,6 +6,9 @@ import models.Product;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 
+/**
+ * JSON serializer for an individual product
+ */
 public class ProductSerializer implements JsonSerializer<Product> {
 
     public JsonElement serialize(final Product product, final Type t, final JsonSerializationContext context) {
