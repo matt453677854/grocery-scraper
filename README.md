@@ -6,12 +6,12 @@ The only dependencies are Java and Maven, and all other dependencies are install
 
 ## Build
 Install dependencies, compile, and test:  
-`mvn install`  
+`$ mvn install`  
 
 ## Test
 Run only the tests:  
-`mvn test`  
+`$ mvn test`  
 
 ## Run
 Run the application (the argument is the URI of the products page):  
-`mvn compile exec:java -Dexec.args="http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html"`  
+`$ mvn compile exec:java -Dexec.args="http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html"`  
