@@ -1,3 +1,5 @@
+package fetchers;
+
 import exceptions.ProductFetchException;
 import exceptions.ProductParseException;
 import models.Product;

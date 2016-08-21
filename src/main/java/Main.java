@@ -1,4 +1,6 @@
 import exceptions.ProductFetchException;
+import fetchers.HTTPProductFetcher;
+import fetchers.ProductFetcher;
 import models.Products;
 
 public class Main {

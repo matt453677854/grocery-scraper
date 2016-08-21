@@ -1,11 +1,6 @@
-package serialisers;
+package models;
 
 import exceptions.ProductParseException;
-import models.Product;
-import models.Products;
-import org.apache.commons.io.IOUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.junit.Test;
 
 import java.io.IOException;

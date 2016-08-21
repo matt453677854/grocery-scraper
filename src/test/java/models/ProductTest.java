@@ -1,5 +1,6 @@
+package models;
+
 import exceptions.ProductParseException;
-import models.Product;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
