@@ -44,6 +44,7 @@ public class Products {
         gsonBuilder.registerTypeAdapter(Products.class, new ProductsSerializer());
         gsonBuilder.registerTypeAdapter(Product.class, new ProductSerializer());
         gsonBuilder.setPrettyPrinting();
+        gsonBuilder.disableHtmlEscaping();
         Gson gson = gsonBuilder.create();
         return gson.toJson(this);
     }

@@ -19,7 +19,7 @@ Install dependencies, compile, and test:
 
 ## Test
 Run only the tests:  
-`$ mvn test`  
+`$ mvn test`
 HTTP endpoints are stubbed out using wiremock.
 
 ## Run
@@ -29,50 +29,50 @@ Run the application (the argument is the URI of the products page):
 ## Example output
 ```
 {
-   "results": [
-     {
-       "title": "Sainsbury\u0027s Apricot Ripe \u0026 Ready x5",
-       "unit_price": 3.50,
-       "size": "38.3kb",
-       "description": "Apricots"
-     },
-     {
-       "title": "Sainsbury\u0027s Avocado Ripe \u0026 Ready XL Loose 300g",
-       "unit_price": 1.50,
-       "size": "38.7kb",
-       "description": "Avocados"
-     },
-     {
-       "title": "Sainsbury\u0027s Avocado, Ripe \u0026 Ready x2",
-       "unit_price": 1.80,
-       "size": "43.4kb",
-       "description": "Avocados"
-     },
-     {
-       "title": "Sainsbury\u0027s Avocados, Ripe \u0026 Ready x4",
-       "unit_price": 3.20,
-       "size": "38.7kb",
-       "description": "Avocados"
-     },
-     {
-       "title": "Sainsbury\u0027s Conference Pears, Ripe \u0026 Ready x4 (minimum)",
-       "unit_price": 1.50,
-       "size": "38.5kb",
-       "description": "Conference"
-     },
-     {
-       "title": "Sainsbury\u0027s Golden Kiwi x4",
-       "unit_price": 1.80,
-       "size": "38.6kb",
-       "description": "Gold Kiwi"
-     },
-     {
-       "title": "Sainsbury\u0027s Kiwi Fruit, Ripe \u0026 Ready x4",
-       "unit_price": 1.80,
-       "size": "39.0kb",
-       "description": "Kiwi"
-     }
-   ],
-   "total": 15.10
- }
+  "results": [
+    {
+      "title": "Sainsbury's Apricot Ripe & Ready x5",
+      "unit_price": 3.50,
+      "size": "38.3kb",
+      "description": "Apricots"
+    },
+    {
+      "title": "Sainsbury's Avocado Ripe & Ready XL Loose 300g",
+      "unit_price": 1.50,
+      "size": "38.7kb",
+      "description": "Avocados"
+    },
+    {
+      "title": "Sainsbury's Avocado, Ripe & Ready x2",
+      "unit_price": 1.80,
+      "size": "43.4kb",
+      "description": "Avocados"
+    },
+    {
+      "title": "Sainsbury's Avocados, Ripe & Ready x4",
+      "unit_price": 3.20,
+      "size": "38.7kb",
+      "description": "Avocados"
+    },
+    {
+      "title": "Sainsbury's Conference Pears, Ripe & Ready x4 (minimum)",
+      "unit_price": 1.50,
+      "size": "38.5kb",
+      "description": "Conference"
+    },
+    {
+      "title": "Sainsbury's Golden Kiwi x4",
+      "unit_price": 1.80,
+      "size": "38.6kb",
+      "description": "Gold Kiwi"
+    },
+    {
+      "title": "Sainsbury's Kiwi Fruit, Ripe & Ready x4",
+      "unit_price": 1.80,
+      "size": "39.0kb",
+      "description": "Kiwi"
+    }
+  ],
+  "total": 15.10
+}
  ```
