@@ -1,5 +1,5 @@
 # Grocery Scraper
-[![Build Status](https://travis-ci.org/matt453677854/grocery-scraper.svg?branch=master)](https://travis-ci.org/matt453677854/grocery-scraper)
+[![Build Status](https://travis-ci.org/matthewdooler/grocery-scraper.svg?branch=master)](https://travis-ci.org/matthewdooler/grocery-scraper)
 
 Console application for scraping the Sainsbury's grocery list page, providing output in JSON format.
 
